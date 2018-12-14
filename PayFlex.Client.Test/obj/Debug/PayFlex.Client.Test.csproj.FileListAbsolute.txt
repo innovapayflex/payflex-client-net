@@ -1,0 +1,13 @@
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\obj\Debug\PayFlex.Client.Test.csprojResolveAssemblyReference.cache
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\PayFlex.Client.Test.dll
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\PayFlex.Client.Test.pdb
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\nunit.framework.dll
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\PayFlex.Client.dll
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\PayFlex.Client.pdb
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\nunit.framework.pdb
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\nunit.framework.xml
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\obj\Debug\PayFlex.Client.Test.dll
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\obj\Debug\PayFlex.Client.Test.pdb
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\Newtonsoft.Json.dll
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\htaspinar\Documents\Visual Studio 2015\Projects\PayFlex.Vpos\PayFlex.Client.Test\bin\Debug\Newtonsoft.Json.xml
