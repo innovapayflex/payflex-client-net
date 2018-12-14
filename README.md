@@ -42,8 +42,6 @@ string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/CpWeb/api/Registe
 
 ```
 
-
-```
 ### VPos Peşin Veya Taksitli Satış İşlemi
 
 
@@ -115,8 +113,6 @@ var vposTokenRequest = new PayFlex.Client.VposRequest()
 var vposSaleResponse = paymentManager.PostProcess(vposSaleRequest);
 var vposSaleInstallmentResponse = paymentManager.PostProcess(vposSaleInstallmentRequest);
 var vposTokenResponse = paymentManager.PostProcess(vposTokenRequest);
-
-```
 
 ```
 
