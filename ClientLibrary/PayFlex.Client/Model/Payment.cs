@@ -11,7 +11,7 @@ namespace PayFlex.Client
         /// <summary>
         /// İşlem adı bilgisi. 
         /// </summary>
-        public PaymentTransactionType? PaymentTransactionType { get; set; }
+        public PaymentTransactionType? TransactionType { get; set; }
 
         public string ServiceUrl { get; set; }      
 

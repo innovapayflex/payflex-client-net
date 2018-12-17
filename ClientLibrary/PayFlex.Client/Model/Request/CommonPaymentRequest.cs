@@ -124,8 +124,8 @@ namespace PayFlex.Client
                 str.AppendFormat("{0}={1}&", "Amount", Amount.Value.ToString(moneyFormatInfo));
             if (AmountCode.HasValue)
                 str.AppendFormat("{0}={1}&", "AmountCode", (int)Enum.Parse(typeof(Currency), AmountCode.Value.ToString()));
-            if (PaymentTransactionType.HasValue)
-                str.AppendFormat("{0}={1}&", "TransactionType", PaymentTransactionType.ToString());
+            if (TransactionType.HasValue)
+                str.AppendFormat("{0}={1}&", "TransactionType", TransactionType.ToString());
             if (!string.IsNullOrWhiteSpace(OrderId))
                 str.AppendFormat("{0}={1}&", "OrderId", OrderId);
             if (!string.IsNullOrWhiteSpace(OrderDescription))

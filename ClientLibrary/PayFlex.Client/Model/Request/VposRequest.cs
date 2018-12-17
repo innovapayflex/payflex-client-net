@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -14,10 +14,6 @@ namespace PayFlex.Client
     /// </summary>
     public class VposRequest : Payment
     {
-        /// <summary>
-        /// İşlem adı bilgisi Boşluk içermemelidir.
-        /// </summary>
-        public PaymentTransactionType TransactionType { get; set; }
         /// <summary>
         /// Üye işyeri kodu
         /// </summary>
