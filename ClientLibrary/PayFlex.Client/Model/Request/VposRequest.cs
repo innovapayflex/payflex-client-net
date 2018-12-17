@@ -151,6 +151,8 @@ namespace PayFlex.Client
                 str.AppendFormat("{0}={1}&", "TransactionType", TransactionType.ToString());
             if (!string.IsNullOrWhiteSpace(ClientMerchantCode))
                 str.AppendFormat("{0}={1}&", "ClientMerchantCode", ClientMerchantCode);
+            if (!string.IsNullOrWhiteSpace(Password))
+                str.AppendFormat("{0}={1}&", "Password", Password);
             if (!string.IsNullOrWhiteSpace(SubMerchantCode))
                 str.AppendFormat("{0}={1}&", "SubMerchantCode", SubMerchantCode);
             if (Bank.HasValue)
