@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -192,7 +192,11 @@ namespace PayFlex.Client
             if (TryMultiBanks.HasValue)
                 str.AppendFormat("{0}={1}&", "TryMultiBanks", TryMultiBanks.Value ? "1" : "");
             if (!string.IsNullOrWhiteSpace(Token))
-                str.AppendFormat("{0}={1}", "Token", Token);
+                str.AppendFormat("{0}={1}&", "Token", Token);
+            if (!string.IsNullOrWhiteSpace(CustomerId))
+                str.AppendFormat("{0}={1}&", "CustomerId", CustomerId);
+            if (!string.IsNullOrWhiteSpace(CreditCard.CardHolderName))
+                str.AppendFormat("{0}={1}", "CardHolderName", CreditCard.CardHolderName);
 
 
             return str.ToString();
