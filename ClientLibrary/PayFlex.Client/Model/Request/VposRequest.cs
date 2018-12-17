@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -101,6 +101,11 @@ namespace PayFlex.Client
             NumberFormatInfo moneyFormatInfo = new NumberFormatInfo();
             moneyFormatInfo.NumberDecimalSeparator = ".";
 
+            if (CreditCard == null)
+            {
+                CreditCard = new CreditCard();
+            }
+
             string json = new JavaScriptSerializer().Serialize(new
             {
                 TransactionType = TransactionType.ToString(),
@@ -132,6 +137,11 @@ namespace PayFlex.Client
 
         public string ToStringBySaveToken()
         {
+            if (CreditCard == null)
+            {
+                CreditCard = new CreditCard();
+            }
+
             StringBuilder str = new StringBuilder();
             str.AppendFormat("{0}={1}&", "ClientMerchantCode", ClientMerchantCode);
             str.AppendFormat("{0}={1}&", "Password", Password);
@@ -145,6 +155,11 @@ namespace PayFlex.Client
 
         public string ToStringByUpdateToken()
         {
+            if (CreditCard == null)
+            {
+                CreditCard = new CreditCard();
+            }
+
             StringBuilder str = new StringBuilder();
             str.AppendFormat("{0}={1}&", "ClientMerchantCode", ClientMerchantCode);
             str.AppendFormat("{0}={1}&", "Password", Password);
@@ -157,6 +172,11 @@ namespace PayFlex.Client
 
         public string ToStringByToken()
         {
+            if (CreditCard == null)
+            {
+                CreditCard = new CreditCard();
+            }
+
             StringBuilder str = new StringBuilder();
             str.AppendFormat("{0}={1}&", "ClientMerchantCode", ClientMerchantCode);
             str.AppendFormat("{0}={1}&", "Password", Password);
