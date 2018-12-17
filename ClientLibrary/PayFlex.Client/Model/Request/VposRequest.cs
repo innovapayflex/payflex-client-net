@@ -33,7 +33,7 @@ namespace PayFlex.Client
         /// <summary>
         /// Bank numarası
         /// </summary>
-        public Bank Bank { get; set; }
+        public Bank? Bank { get; set; }
         /// <summary>
         /// Benzesiz (Unique) İşlem numara bilgisi
         /// </summary>
@@ -41,11 +41,11 @@ namespace PayFlex.Client
         /// <summary>
         /// İşlem tutar bilgisi
         /// </summary>
-        public decimal CurrencyAmount { get; set; }
+        public decimal? CurrencyAmount { get; set; }
         /// <summary>
         /// İşlem kur bilgisi (YTL = 949)
         /// </summary>
-        public Currency CurrencyCode { get; set; }
+        public Currency? CurrencyCode { get; set; }
         /// <summary>
         /// Kredi kart bilgisi
         /// </summary>
@@ -113,7 +113,7 @@ namespace PayFlex.Client
                 SubMerchantCode = SubMerchantCode,
                 BankId = (int)Enum.Parse(typeof(Bank), Bank.ToString()),
                 TranscationId = TranscationId,
-                CurrencyAmount = CurrencyAmount.ToString(moneyFormatInfo),
+                CurrencyAmount = CurrencyAmount.Value.ToString(moneyFormatInfo),
                 CurrencyCode = (int)Enum.Parse(typeof(Currency), CurrencyCode.ToString()),
                 InstallmentCount = CreditCard.InstallmentCount.HasValue ? CreditCard.InstallmentCount.Value.ToString() : "",
                 Pan = CreditCard.Pan,
@@ -133,6 +133,67 @@ namespace PayFlex.Client
             });
 
             return json;
+        }
+
+        public override string ToString()
+        {
+            NumberFormatInfo moneyFormatInfo = new NumberFormatInfo();
+            moneyFormatInfo.NumberDecimalSeparator = ".";
+
+            if (CreditCard == null)
+            {
+                CreditCard = new CreditCard();
+            }
+
+            StringBuilder str = new StringBuilder();
+
+            if (!string.IsNullOrWhiteSpace(TransactionType.ToString()))
+                str.AppendFormat("{0}={1}&", "TransactionType", TransactionType.ToString());
+            if (!string.IsNullOrWhiteSpace(ClientMerchantCode))
+                str.AppendFormat("{0}={1}&", "ClientMerchantCode", ClientMerchantCode);
+            if (!string.IsNullOrWhiteSpace(SubMerchantCode))
+                str.AppendFormat("{0}={1}&", "SubMerchantCode", SubMerchantCode);
+            if (Bank.HasValue)
+                str.AppendFormat("{0}={1}&", "BankId", (int)Enum.Parse(typeof(Bank), Bank.ToString()));
+            if (!string.IsNullOrWhiteSpace(TranscationId))
+                str.AppendFormat("{0}={1}&", "TranscationId", TranscationId);
+            if (CurrencyAmount.HasValue)
+                str.AppendFormat("{0}={1}&", "CurrencyAmount", CurrencyAmount.Value.ToString(moneyFormatInfo));
+            if (CurrencyCode.HasValue)
+                str.AppendFormat("{0}={1}&", "CurrencyCode", (int)Enum.Parse(typeof(Currency), CurrencyCode.ToString()));
+            if (CreditCard.InstallmentCount.HasValue)
+                str.AppendFormat("{0}={1}&", "InstallmentCount", CreditCard.InstallmentCount.Value.ToString());
+            if (!string.IsNullOrWhiteSpace(CreditCard.Pan))
+                str.AppendFormat("{0}={1}&", "Pan", CreditCard.Pan);
+            if (!string.IsNullOrWhiteSpace(CreditCard.Expiry))
+                str.AppendFormat("{0}={1}&", "Expiry", CreditCard.Expiry);
+            if (!string.IsNullOrWhiteSpace(CreditCard.CVV))
+                str.AppendFormat("{0}={1}&", "Cvv", CreditCard.CVV);
+            if (!string.IsNullOrWhiteSpace(ReferenceTransactionId))
+                str.AppendFormat("{0}={1}&", "ReferenceTransactionId", ReferenceTransactionId);
+            if (!string.IsNullOrWhiteSpace(CreditCard.CardHolderIp))
+                str.AppendFormat("{0}={1}&", "CardHoldersClientIp", CreditCard.CardHolderIp);
+            if (!string.IsNullOrWhiteSpace(CreditCard.CardHolderEmail))
+                str.AppendFormat("{0}={1}&", "CardHoldersEmail", CreditCard.CardHolderEmail);
+            if (!string.IsNullOrWhiteSpace(OrderId))
+                str.AppendFormat("{0}={1}&", "OrderId", OrderId);
+            if (!string.IsNullOrWhiteSpace(OrderDescription))
+                str.AppendFormat("{0}={1}&", "OrderDescription", OrderDescription);
+            if (!string.IsNullOrWhiteSpace(Cavv))
+                str.AppendFormat("{0}={1}&", "Cavv", Cavv);
+            if (!string.IsNullOrWhiteSpace(Eci))
+                str.AppendFormat("{0}={1}&", "Eci", Eci);
+            if (!string.IsNullOrWhiteSpace(Xid))
+                str.AppendFormat("{0}={1}&", "Xid", Xid);
+            if (!string.IsNullOrWhiteSpace(Md))
+                str.AppendFormat("{0}={1}&", "Md", Md);
+            if (TryMultiBanks.HasValue)
+                str.AppendFormat("{0}={1}&", "TryMultiBanks", TryMultiBanks.Value ? "1" : "");
+            if (!string.IsNullOrWhiteSpace(Token))
+                str.AppendFormat("{0}={1}", "Token", Token);
+
+
+            return str.ToString();
         }
 
         public string ToStringBySaveToken()

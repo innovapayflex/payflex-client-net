@@ -49,6 +49,7 @@
     <Compile Include="Model\Request\VposRequest.cs" />
     <Compile Include="Model\Response\PaymentResponse.cs" />
     <Compile Include="Model\Response\RegisterTransactionResponse.cs" />
+    <Compile Include="Model\Response\TokenResponse.cs" />
     <Compile Include="Model\Response\VposQueryResponse.cs" />
     <Compile Include="Model\Response\VPosResponse.cs" />
     <Compile Include="PayFlexClientException.cs" />

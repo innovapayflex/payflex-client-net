@@ -19,14 +19,14 @@ namespace PayFlex.Client.Processor
             string strHostAddress = payment.ServiceUrl;
             #endregion
 
-            byte[] postByteArray = Encoding.UTF8.GetBytes(payment.ToJson());
+            byte[] postByteArray = Encoding.UTF8.GetBytes(payment.ToString());
 
             ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | (SecurityProtocolType)768 | (SecurityProtocolType)3072 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             WebRequest webRequest = WebRequest.Create(strHostAddress);
             webRequest.Method = "POST";
-            webRequest.ContentType = "application/json; charset=utf-8";
+            webRequest.ContentType = "application/x-www-form-urlencoded";
             webRequest.ContentLength = postByteArray.Length;
             webRequest.UseDefaultCredentials = true;
 
