@@ -1,5 +1,15 @@
 image: Visual Studio 2015
 
+version: 1.0.{build}
+skip_tags: true
+configuration: Release
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+
 before_build:
 - nuget restore
 - choco install opencover.portable
@@ -14,5 +24,6 @@ build:
   verbosity: minimal
 
 test_script:
-- OpenCover.Console.exe -register:user  -target:nunit-console.exe -targetargs:"/testcontainer:"".\PayFlex.Client.Test\bin\Debug\PayFlex.Client.Test.dll" -output:".\PayFlex.Client.Test_coverage.xml"
+- OpenCover.Console.exe -register:user  -target:nunit-console.exe -targetargs:"".\PayFlex.Client.Tes\bin\$env:CONFIGURATION\PayFlex.Client.Test.dll"" /noshadow" -filter:"+[PayFlexClientTest*]*"  -output:".\PayFlex.Client.Test_coverage.xml"
+                                                                   
 - codecov -f "PayFlex.Client.Test_coverage.xml
