@@ -24,6 +24,6 @@ build:
   verbosity: minimal
 
 test_script:
-- OpenCover.Console.exe -register:user  -target:nunit-console.exe -targetargs:"/testcontainer:"".\PayFlex.Client.Test\bin\Debug\PayFlex.Client.Test.dll" -filter:"+[PayFlexClientTest*]*" -output:".\PayFlex.Client.Test_coverage.xml"
+- OpenCover.Console.exe -register:user  -target:nunit-console.exe "-targetargs:""PayFlex.Client.Test\bin\Debug\PayFlex.Client.Test.dll"" /noshadow" -filter:"+[PayFlexClientTest*]*" -output:".\PayFlex.Client.Test_coverage.xml"
                                                                     
 - codecov -f "PayFlex.Client.Test_coverage.xml
