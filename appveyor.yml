@@ -26,4 +26,4 @@ build:
 test_script:
 - OpenCover.Console.exe -register:user  -target:nunit3-console.exe "-targetargs:"".\PayFlex.Client.Test\obj\Debug\PayFlex.Client.Test.dll""" -filter:"+[PayFlexClientTest*]*" -output:".\PayFlex.Client.Test_coverage.xml"
                                                                     
-- codecov -f "PayFlex.Client.Test_coverage.xml
+- codecov -f "TestResult.xml"
