@@ -1,5 +1,7 @@
 # PayFlex Client C# .Net 
 
+[![Build status](https://ci.appveyor.com/api/projects/status/86cps1cnpj6trull?svg=true)](https://ci.appveyor.com/project/Innova-PayFlex/payflex-vpos-client-net)
+
 # Kullanım
 
 ### Ortak Ödeme Satış İşlemi
