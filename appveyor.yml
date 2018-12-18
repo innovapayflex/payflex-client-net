@@ -5,6 +5,10 @@ before_build:
 - choco install opencover.portable
 - choco install codecov
 
+environment:
+  CODECOV_TOKEN:
+    secure: 04463347-ad4f-4ff4-8d48-958fd4acdd77
+
 build:
   project: PayFlex.Client.sln
   verbosity: minimal
