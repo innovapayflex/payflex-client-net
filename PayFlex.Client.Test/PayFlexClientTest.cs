@@ -52,7 +52,7 @@ namespace PayFlex.Client.Test
                 ReturnUrl = "https://www.innova.com.tr",
                 Amount = (decimal)2.99,
                 AmountCode = Currency.TRY,
-                PaymentTransactionType = PaymentTransactionType.Sale,
+                TransactionType = PaymentTransactionType.Sale,
                 IsSaveCard = true,
                 IsHideSaveCard = false
             };
@@ -98,18 +98,18 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 TransactionType = PaymentTransactionType.Sale,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
-                Password = "*****",
+                Password = "1q2w3eASD",
                 TranscationId = Guid.NewGuid().ToString(),
-                Bank = Bank.Garanti,
+                Bank = Bank.Finans,
                 CreditCard = new CreditCard()
                 {
-                    Pan = "4938410160702981",
-                    ExpireMonth = "03",
-                    ExpireYear = "2024",
-                    CVV = "243",
+                    Pan = "5456165456165454",
+                    ExpireMonth = "12",
+                    ExpireYear = "2025",
+                    CVV = "000",
                     CardHolderIp = "127.0.0.1"
                 },
-                CurrencyAmount = (decimal)4.00,
+                CurrencyAmount = (decimal)7.00,
                 CurrencyCode = Currency.TRY,
 
             };
@@ -146,7 +146,7 @@ namespace PayFlex.Client.Test
                 TranscationId = Guid.NewGuid().ToString(),
                 Bank = Bank.IsBank,
                 Token = "0dabdcb7ebf04059979fa89300xxxxxx",
-                CurrencyAmount = (decimal)4.00,
+                CurrencyAmount = (decimal)4.01,
                 CurrencyCode = Currency.TRY
             };
 
@@ -170,8 +170,8 @@ namespace PayFlex.Client.Test
             {
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
-                Password = "****",
-                PaymentTransactionType = PaymentTransactionType.SaleCancel,
+                Password = "1q2w3eASD",
+                TransactionType = PaymentTransactionType.SaleCancel,
                 ReferenceTransactionId = "9B539FAF6A174428B905A893",
                 CreditCard = new CreditCard
                 {
@@ -196,7 +196,7 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
                 Password = "****",
-                PaymentTransactionType = PaymentTransactionType.SaleRefund,
+                TransactionType = PaymentTransactionType.SaleRefund,
                 ReferenceTransactionId = "9B539FAF6A174428B905A893",
                 CreditCard = new CreditCard
                 {
@@ -223,7 +223,7 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
                 Password = "****",
-                PaymentTransactionType = PaymentTransactionType.LoyaltyQuery,
+                TransactionType = PaymentTransactionType.LoyaltyQuery,
                 CreditCard = new CreditCard
                 {
                     Pan = "4543xxxx9699",
@@ -251,7 +251,7 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
                 Password = "****",
-                PaymentTransactionType = PaymentTransactionType.Auth,
+                TransactionType = PaymentTransactionType.Auth,
                 CreditCard = new CreditCard
                 {
                     Pan = "4543xxxx9699",
@@ -281,7 +281,7 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
                 Password = "****",
-                PaymentTransactionType = PaymentTransactionType.AuthCancel,
+                TransactionType = PaymentTransactionType.AuthCancel,
                 ReferenceTransactionId = "4318FDED5FD44FC3A90BA893",
                 CreditCard = new CreditCard
                 {
@@ -307,7 +307,7 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
                 Password = "****",
-                PaymentTransactionType = PaymentTransactionType.Capture,
+                TransactionType = PaymentTransactionType.Capture,
                 ReferenceTransactionId = "4318FDED5FD44FC3A90BA893",
                 CreditCard = new CreditCard
                 {
@@ -334,7 +334,7 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
                 Password = "****",
-                PaymentTransactionType = PaymentTransactionType.Reversal,
+                TransactionType = PaymentTransactionType.Reversal,
                 ReferenceTransactionId = "4318FDED5FD44FC3A90BA893",
                 TranscationId = Guid.NewGuid().ToString()
             };
@@ -356,7 +356,7 @@ namespace PayFlex.Client.Test
                 ServiceUrl = serviceUrl,
                 ClientMerchantCode = "1B18B80EF00A41C2BC4AF2628EA88600",
                 Password = "1q2w3eASD",
-                PaymentTransactionType = PaymentTransactionType.SaveCard,                
+                TransactionType = PaymentTransactionType.SaveCard,                
                 TranscationId = Guid.NewGuid().ToString(),
                 CreditCard = new CreditCard()
                 {
