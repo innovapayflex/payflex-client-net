@@ -27,13 +27,19 @@ namespace PayFlex.Client.Test
         //+ Test VPos Get Token Then Return GetAnyResponse
         //+ Test VPos Delete Token Then Return GetAnyResponse
 
+        private PaymentManager _paymentManager;
+
+        [OneTimeSetUp]
+        public void Init()
+        {
+            _paymentManager = new PaymentManager();
+        }
 
         [Test]
         public void Test_CommonPayment_Post_Payment_Then_Return_GetAnyResponse()
         {
             string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/CpWeb/api/RegisterTransaction";
-
-            var paymentManager = new PayFlex.Client.PaymentManager();
+            
 
             var commonPaymentRequest = new PayFlex.Client.CommonPaymentRequest()
             {
@@ -57,7 +63,7 @@ namespace PayFlex.Client.Test
                 IsHideSaveCard = false
             };
 
-            var result = paymentManager.PostProcess(commonPaymentRequest);
+            var result = _paymentManager.PostProcess(commonPaymentRequest);
 
             var registerTransactionResponse = JsonConvert.DeserializeObject(result.Response, typeof(RegisterTransactionResponse));
 
@@ -67,8 +73,7 @@ namespace PayFlex.Client.Test
         public void Test_CommonPayment_Post_Payment_Query_Then_Return_GetAnyResponse()
         {
             string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/CpWeb/api/VposTransaction";
-
-            var paymentManager = new PayFlex.Client.PaymentManager();
+         
 
             var vposQueryRequest = new PayFlex.Client.VposQueryRequest()
             {
@@ -78,7 +83,7 @@ namespace PayFlex.Client.Test
                 Password = "xxxx"
             };
 
-            var result = paymentManager.PostProcess(vposQueryRequest);
+            var result = _paymentManager.PostProcess(vposQueryRequest);
 
             var vposQueryResponse = JsonConvert.DeserializeObject(result.Response, typeof(VposQueryResponse));
 
@@ -88,9 +93,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Sale_Installment_Sale_Token_Sale_Payment_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PayFlex.Client.PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";           
 
             //Peşin Satış
             var vposSaleRequest = new PayFlex.Client.VposRequest()
@@ -150,9 +153,9 @@ namespace PayFlex.Client.Test
                 CurrencyCode = Currency.TRY
             };
 
-            var vposSaleResponse = paymentManager.PostProcess(vposSaleRequest);
-            var vposSaleInstallmentResponse = paymentManager.PostProcess(vposSaleInstallmentRequest);
-            var vposTokenResponse = paymentManager.PostProcess(vposTokenRequest);
+            var vposSaleResponse = _paymentManager.PostProcess(vposSaleRequest);
+            var vposSaleInstallmentResponse = _paymentManager.PostProcess(vposSaleInstallmentRequest);
+            var vposTokenResponse = _paymentManager.PostProcess(vposTokenRequest);
 
             Assert.AreNotEqual("", vposSaleResponse.Response);
             Assert.AreNotEqual("", vposSaleInstallmentResponse.Response);
@@ -162,9 +165,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Sale_Cancellation_Installment_Sale_Cancellation_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";           
 
             var vposSaleCancelationRequest = new PayFlex.Client.VposRequest()
             {
@@ -179,7 +180,7 @@ namespace PayFlex.Client.Test
                 }
             };
 
-            var vposSaleCancelationResponse = paymentManager.PostProcess(vposSaleCancelationRequest);
+            var vposSaleCancelationResponse = _paymentManager.PostProcess(vposSaleCancelationRequest);
 
             Assert.AreNotEqual("", vposSaleCancelationResponse);
         }
@@ -187,9 +188,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Sale_Refund_Installment_Sale_Refund_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";           
 
             var vposSaleRefundRequest = new PayFlex.Client.VposRequest()
             {
@@ -206,7 +205,7 @@ namespace PayFlex.Client.Test
                 CurrencyCode = Currency.TRY
             };
 
-            var vposSaleRefundResponse = paymentManager.PostProcess(vposSaleRefundRequest);
+            var vposSaleRefundResponse = _paymentManager.PostProcess(vposSaleRefundRequest);
 
             Assert.AreNotEqual("", vposSaleRefundResponse);
         }
@@ -215,8 +214,7 @@ namespace PayFlex.Client.Test
         public void Test_VPos_Point_Query_Then_Return_GetAnyResponse()
         {
             string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
+            
 
             var vposPointQueryRequest = new PayFlex.Client.VposRequest()
             {
@@ -234,7 +232,7 @@ namespace PayFlex.Client.Test
                 Bank = Bank.IsBank_Innova
             };
 
-            var vposPointQueryResponse = paymentManager.PostProcess(vposPointQueryRequest);
+            var vposPointQueryResponse = _paymentManager.PostProcess(vposPointQueryRequest);
 
             Assert.AreNotEqual("", vposPointQueryResponse);
         }
@@ -243,8 +241,7 @@ namespace PayFlex.Client.Test
         public void Test_VPos_PreAuthorization_Then_Return_GetAnyResponse()
         {
             string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
+            
 
             var vposPreAuthorizationRequest = new PayFlex.Client.VposRequest()
             {
@@ -264,7 +261,7 @@ namespace PayFlex.Client.Test
                 CurrencyCode = Currency.TRY
             };
 
-            var vposPreAuthorizationResponse = paymentManager.PostProcess(vposPreAuthorizationRequest);
+            var vposPreAuthorizationResponse = _paymentManager.PostProcess(vposPreAuthorizationRequest);
 
             Assert.AreNotEqual("", vposPreAuthorizationResponse);
         }
@@ -273,8 +270,7 @@ namespace PayFlex.Client.Test
         public void Test_VPos_PreAuthorization_Close_Then_Return_GetAnyResponse()
         {
             string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
+           
 
             var vposPreAuthorizationCancelRequest = new PayFlex.Client.VposRequest()
             {
@@ -290,7 +286,7 @@ namespace PayFlex.Client.Test
                 Bank = Bank.IsBank_Innova
             };
 
-            var vposPreAuthorizationCancelResponse = paymentManager.PostProcess(vposPreAuthorizationCancelRequest);
+            var vposPreAuthorizationCancelResponse = _paymentManager.PostProcess(vposPreAuthorizationCancelRequest);
 
             Assert.AreNotEqual("", vposPreAuthorizationCancelResponse);
         }
@@ -298,9 +294,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_PreAuthorization_Capture_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";           
 
             var vposPreAuthorizationCaptureRequest = new PayFlex.Client.VposRequest()
             {
@@ -317,7 +311,7 @@ namespace PayFlex.Client.Test
                 Bank = Bank.IsBank_Innova
             };
 
-            var vposPreAuthorizationCaptureResponse = paymentManager.PostProcess(vposPreAuthorizationCaptureRequest);
+            var vposPreAuthorizationCaptureResponse = _paymentManager.PostProcess(vposPreAuthorizationCaptureRequest);
 
             Assert.AreNotEqual("", vposPreAuthorizationCaptureResponse);
         }
@@ -326,8 +320,6 @@ namespace PayFlex.Client.Test
         public void Test_VPos_Reversal_Then_Return_GetAnyResponse()
         {
             string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
 
             var vposReversalRequest = new PayFlex.Client.VposRequest()
             {
@@ -339,7 +331,7 @@ namespace PayFlex.Client.Test
                 TranscationId = Guid.NewGuid().ToString()
             };
 
-            var vposReversalResponse = paymentManager.PostProcess(vposReversalRequest);
+            var vposReversalResponse = _paymentManager.PostProcess(vposReversalRequest);
 
             Assert.AreNotEqual("", vposReversalResponse);
         }
@@ -347,9 +339,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Save_Card_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/VposClient";          
 
             var vposSaveCardRequest = new PayFlex.Client.VposRequest()
             {
@@ -372,7 +362,7 @@ namespace PayFlex.Client.Test
                 CustomerId = "platform11"
             };
 
-            var vposSaveCardResponse = paymentManager.PostProcess(vposSaveCardRequest);
+            var vposSaveCardResponse = _paymentManager.PostProcess(vposSaveCardRequest);
 
             Assert.AreNotEqual("", vposSaveCardResponse);
         }
@@ -380,9 +370,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Save_Token_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/SaveToken";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/SaveToken";           
 
             var vposSaveTokenRequest = new PayFlex.Client.VposRequest()
             {
@@ -399,7 +387,7 @@ namespace PayFlex.Client.Test
                 CustomerId = "hkntspnr"
             };
 
-            var vposSaveTokenResponse = paymentManager.PostProcess(vposSaveTokenRequest);
+            var vposSaveTokenResponse = _paymentManager.PostProcess(vposSaveTokenRequest);
 
             var tokenResponse = JsonConvert.DeserializeObject(vposSaveTokenResponse.Response, typeof(TokenResponse));
 
@@ -409,9 +397,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Update_Pan_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/UpdatePan";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/UpdatePan";           
 
             var vposUpdatePanRequest = new PayFlex.Client.VposRequest()
             {
@@ -429,7 +415,7 @@ namespace PayFlex.Client.Test
                 Token = "2b5f2bc7c2f44d61a72ca32100e79605"
             };
 
-            var vposUpdatePanResponse = paymentManager.PostProcess(vposUpdatePanRequest);
+            var vposUpdatePanResponse = _paymentManager.PostProcess(vposUpdatePanRequest);
 
             var tokenResponse = JsonConvert.DeserializeObject(vposUpdatePanResponse.Response, typeof(TokenResponse));
 
@@ -439,9 +425,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Get_Token_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/GetPan";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/GetPan";          
 
             var vposGetTokenRequest = new PayFlex.Client.VposRequest()
             {
@@ -452,7 +436,7 @@ namespace PayFlex.Client.Test
                 Token = "2b5f2bc7c2f44d61a72ca32100e79605"
             };
 
-            var vposGetTokenResponse = paymentManager.PostProcess(vposGetTokenRequest);
+            var vposGetTokenResponse = _paymentManager.PostProcess(vposGetTokenRequest);
 
             var tokenResponse = JsonConvert.DeserializeObject(vposGetTokenResponse.Response, typeof(TokenResponse));
 
@@ -462,9 +446,7 @@ namespace PayFlex.Client.Test
         [Test]
         public void Test_VPos_Delete_Token_Then_Return_GetAnyResponse()
         {
-            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/DeleteToken";
-
-            var paymentManager = new PaymentManager();
+            string serviceUrl = "https://sanalpos.innova.com.tr/VposClient/VposClientWebApi/api/DeleteToken";           
 
             var vposGetTokenRequest = new PayFlex.Client.VposRequest()
             {
@@ -475,7 +457,7 @@ namespace PayFlex.Client.Test
                 Token = "2b5f2bc7c2f44d61a72ca32100e79605"
             };
 
-            var vposGetTokenResponse = paymentManager.PostProcess(vposGetTokenRequest);
+            var vposGetTokenResponse = _paymentManager.PostProcess(vposGetTokenRequest);
 
             var tokenResponse = JsonConvert.DeserializeObject(vposGetTokenResponse.Response, typeof(TokenResponse));
 
